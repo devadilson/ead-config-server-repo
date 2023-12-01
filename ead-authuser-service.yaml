@@ -44,11 +44,13 @@ ead:
     refreshscope:
       name: Adilson
   
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: '*'
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - heath
 
 resilience4j:
   circuitbreaker:
