@@ -47,7 +47,7 @@ ead:
   management:
     endpoints:
       web:
-        expose:
+        exposure:
           include:
             - refresh
             - health
