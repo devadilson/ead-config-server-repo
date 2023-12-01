@@ -42,7 +42,7 @@ ead:
   
   authuser:
     refreshscope:
-      name: Adilson
+      name: Adilson Dev
   
 management:
   endpoints:
