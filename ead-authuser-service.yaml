@@ -39,6 +39,18 @@ ead:
   broker:
     exchange:
       userEvent: ead.userevent
+  
+  authuser:
+    refreshscope:
+      name: Adilson
+  
+  management:
+    endpoints:
+      web:
+        expose:
+          include:
+            - refresh
+            - health
 
 resilience4j:
   circuitbreaker:
