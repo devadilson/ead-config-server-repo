@@ -50,7 +50,7 @@ management:
       exposure:
         include:
           - refresh
-          - heath
+          - health
 
 resilience4j:
   circuitbreaker:
