@@ -1,0 +1,69 @@
+server:
+  port: 8087 #{PORT}
+  servlet:
+    context-path: '/ead-authuser/'
+
+spring:
+  application:
+    name: ead-authuser-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ead_authuser_v2 #${JDBC_DATABASE_URL}
+    username: admin #${JDBC_DATABASE_USERNAME}
+    password: admin #${JDBC_DATABASE_PASSWWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
+  output:
+    ansi:
+      enabled: Always
+  rabbitmq:
+    addresses: amqps://kccfuaqw:33kfFoWyprGXTrPbyC_d6qqO1TCHZIvM@gerbil.rmq.cloudamqp.com/kccfuaqw #{CLOUDAMP_URL}
+
+logging:
+  level:
+    com.ead.: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+ead:
+  api:
+    url:
+      course: 'http://ead-course-service/ead-course'
+  broker:
+    exchange:
+      userEvent: ead.userevent
+  
+  authuser:
+    refreshscope:
+      name: Adilson Dev
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitbrakerInstace:
+        slidingWindowSize: 30
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 2
+        waitDurationInOpenState: 30s
+        failureRateThreshold: 80
+  retry:
+    instances:
+      retryInstance:
+        maxAttempts: 3
+        waitDuration: 5s
