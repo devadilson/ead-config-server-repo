@@ -1,0 +1,15 @@
+ead:
+  serviceRegistry:
+    username: serviceregistry
+    password: 'ead123sr' #UTILIZAR CONFIG_SERVER POST-> /encrypt {cipher}+HASH_GERADO
+  auth:
+    jwtSecret: 't7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)H@McQfTjWn' #UTILIZAR CONFIG_SERVER POST-> /encrypt {cipher}+HASH_GERADO
+    jwtExpirationMs: 14400000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@localhost:8761/eureka'
+  instance:
+    hostname: localhost #{APP_DOMAIN_NAME}
+    #non-secure-port: 80
