@@ -19,11 +19,11 @@ spring:
     properties:
       hibernate:
         show_sql: true
-  output:
-    ansi:
-      enabled: Always
+  #output: removido em prod esse objeto
+  #  ansi:
+  #    enabled: Always
   rabbitmq:
-    addresses: amqps://kccfuaqw:33kfFoWyprGXTrPbyC_d6qqO1TCHZIvM@gerbil.rmq.cloudamqp.com/kccfuaqw #{CLOUDAMP_URL}
+    addresses: amqps://kccfuaqw:33kfFoWyprGXTrPbyC_d6qqO1TCHZIvM@gerbil.rmq.cloudamqp.com/kccfuaqw #{CLOUDAMQP_URL}
 
 logging:
   level:
